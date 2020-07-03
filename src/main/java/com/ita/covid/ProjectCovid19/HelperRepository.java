@@ -7,7 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PersonRepository extends JpaRepository<Person,String> {
-    @Query(value="SELECT * FROM Person p WHERE p.state = ?1",nativeQuery = true)
-    List<Person> findByState(String state);
+public interface HelperRepository extends JpaRepository<Helper,String> {
+
+    @Query(value="SELECT * FROM Helper p WHERE p.city = ?1",nativeQuery = true)
+    List<Helper> findHelperByCity(String city);
 }

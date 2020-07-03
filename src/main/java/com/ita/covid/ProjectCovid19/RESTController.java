@@ -9,10 +9,13 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
-public class PersonController {
+public class RESTController {
 
     @Autowired
     PersonRepository personRepository;
+
+    @Autowired
+    HelperRepository helperRepository;
 
     @GetMapping("/person")
     public List<Person> getAllPerson(){
@@ -44,4 +47,20 @@ public class PersonController {
         return "Success";
     }
 
+    @PutMapping("/reportState/{name}")
+    public List<Person> repoState(@PathVariable(value="name") String state) {
+        List<Person> people = personRepository.findByState(state);
+        return people;
+    }
+
+
+    @GetMapping("/help/{city}")
+        public ResponseEntity<List<Helper>> getHelp(@PathVariable(value="city") String city) throws ResourceNotFoundException {
+
+            List<Helper> helpers = helperRepository.findHelperByCity(city);
+
+            return ResponseEntity.ok().body(helpers);
+        }
 }
+
+
