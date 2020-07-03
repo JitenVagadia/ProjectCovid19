@@ -2,19 +2,33 @@ package com.ita.covid.ProjectCovid19;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 
 @Entity
 public class Helper {
 
     @Id
+    @Pattern(regexp= "^[0-9]{10}$",message="contact must be 10 digits." )
     private String helperContact;
+    @Size(min=3,max=30,message="Name must be between 3 and 30 characters.")
     private String helperName;
+    @Pattern(regexp= "^[A-Za-z]{1,15}$",message="must be name without any spaces." )
     private String helperCity;
+    @Pattern(regexp= "^[A-Za-z]{1,15}$",message="must be name without any spaces." )
     private String helperState;
+    @NotNull
+    @Email(message="must be a valid email.")
     private String helperEmail;
     private String helperAddress;
     private String Description;
+
+    public Helper(){
+
+    }
 
     public Helper(String helperContact, String helperName, String helperCity, String helperState, String helperEmail, String helperAddress, String description) {
         this.helperContact = helperContact;

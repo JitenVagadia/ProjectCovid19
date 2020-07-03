@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface HelperRepository extends JpaRepository<Helper,String> {
 
-    @Query(value="SELECT * FROM Helper p WHERE p.city = ?1",nativeQuery = true)
+    @Query(value="SELECT * FROM Helper p WHERE p.helper_city = ?1",nativeQuery = true)
     List<Helper> findHelperByCity(String city);
 }

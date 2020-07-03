@@ -1,30 +1,54 @@
 package com.ita.covid.ProjectCovid19;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.*;
 import java.sql.Date;
 @Entity
 public class Person {
 
     @Id
+    @Pattern(regexp= "^[0-9]{10}$",message="contact must be 10 digits." )
     private String personContact;
 
+    @NotNull
+    @Min(1)
+    @Max(200)
     private short personAge;
+
+    @NotNull
+    @Min(1)
     private short personFamilyMembers;
     private boolean personRecovered;
     private boolean personDead;
     private boolean personTravelledAbroad;
+    @Pattern(regexp= "^[A-Za-z]{0,15}$",message="must be name without any spaces." )
     private String personTravelledAbroadCityName;
     private boolean personTravelledInCountry;
+    @Pattern(regexp= "^[A-Za-z]{0,15}$",message="must be name without any spaces." )
     private String personTravelledInCountryCityName;
+
+    @NotNull
+    @Pattern(regexp= "^[A-Za-z]{1,15}$",message="must be name without any spaces." )
     private String personFirstName;
+
+    @NotNull
+    @Pattern(regexp= "^[A-Za-z]{1,15}$",message="must be name without any spaces." )
     private String personLastName;
+
+    @NotNull
+    @Pattern(regexp= "^(Male)|(Female)|(Other)$")
     private String personGender;
+
+    @NotNull
+    @Pattern(regexp= "^[A-Za-z]{1,15}$",message="must be name without any spaces." )
     private String personCity;
+    @NotNull
+    @Pattern(regexp= "^[A-Za-z]{1,15}$",message="must be name without any spaces." )
     private String personState;
+    @Email
     private String personEmail;
+
     private Date personInfectionDate;
 
     public Person(){

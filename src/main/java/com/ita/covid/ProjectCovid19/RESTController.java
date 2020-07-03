@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +31,7 @@ public class RESTController {
     }
 
     @PostMapping("/person")
-    public String AddPerson(@RequestBody Person person){
+    public String AddPerson(@Valid @RequestBody Person person){
         //validation
         personRepository.save(person);
         return "something";
@@ -47,7 +48,7 @@ public class RESTController {
         return "Success";
     }
 
-    @PutMapping("/reportState/{name}")
+    @GetMapping("/reportState/{name}")
     public List<Person> repoState(@PathVariable(value="name") String state) {
         List<Person> people = personRepository.findByState(state);
         return people;
@@ -55,12 +56,26 @@ public class RESTController {
 
 
     @GetMapping("/help/{city}")
-        public ResponseEntity<List<Helper>> getHelp(@PathVariable(value="city") String city) throws ResourceNotFoundException {
+    public ResponseEntity<List<Helper>> getHelp(@PathVariable(value="city") String city) throws ResourceNotFoundException {
 
-            List<Helper> helpers = helperRepository.findHelperByCity(city);
+        List<Helper> helpers = helperRepository.findHelperByCity(city);
+        return ResponseEntity.ok().body(helpers);
 
-            return ResponseEntity.ok().body(helpers);
-        }
+    }
+
+    @PostMapping("/help")
+    public String AddHelper(@Valid @RequestBody Helper helper){
+
+        helperRepository.save(helper);
+        return "save complete";
+    }
+
+    @DeleteMapping("help/{contact}")
+    public String DeleteHelper(@PathVariable(value="contact") String contact){
+
+        helperRepository.deleteById(contact);
+        return "delete successful";
+    }
 }
 
 
