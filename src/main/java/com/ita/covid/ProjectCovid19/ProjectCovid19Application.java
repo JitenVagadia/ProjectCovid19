@@ -10,4 +10,7 @@ public class ProjectCovid19Application {
 		SpringApplication.run(ProjectCovid19Application.class, args);
 	}
 
+
+
+
 }

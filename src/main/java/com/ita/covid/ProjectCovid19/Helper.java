@@ -24,20 +24,21 @@ public class Helper {
     @Email(message="must be a valid email.")
     private String helperEmail;
     private String helperAddress;
-    private String Description;
+    private String helperDescription;
 
     public Helper(){
 
     }
 
-    public Helper(String helperContact, String helperName, String helperCity, String helperState, String helperEmail, String helperAddress, String description) {
+
+    public Helper(String helperContact, String helperName, String helperCity, String helperState, String helperEmail, String helperAddress,String helperDescription) {
         this.helperContact = helperContact;
         this.helperName = helperName;
         this.helperCity = helperCity;
         this.helperState = helperState;
         this.helperEmail = helperEmail;
         this.helperAddress = helperAddress;
-        this.Description = description;
+        this.helperDescription = helperDescription;
     }
 
 
@@ -89,12 +90,9 @@ public class Helper {
         this.helperAddress = helperAddress;
     }
 
-    public String getDescription() {
-        return Description;
-    }
+    public String getHelperDescription() { return helperDescription; }
 
-    public void setDescription(String description) {
-        this.Description = description;
-    }
+    public void setHelperDescription(String helperDescription) { this.helperDescription = helperDescription; }
+
 
 }

@@ -55,7 +55,7 @@ public class Person {
 
     }
 
-    public Person(String personContact, short personAge, short personFamilyMembers, boolean personRecovered, boolean personDead, boolean personTravelledAbroad, String personTravelledAbroadCityName, boolean personTravelledInCountry, String personTravelledInCountryCityName, String personFirstName, String personLastName, String personGender, String personCity, String personState, String personEmail, Date personInfectionDate) {
+    public Person(String personContact, short personAge, short personFamilyMembers, boolean personRecovered, boolean personDead, boolean personTravelledAbroad, String personTravelledAbroadCityName, boolean personTravelledInCountry, String personTravelledInCountryCityName, String personFirstName, String personLastName, String personGender, String personCity, String personState, String personEmail, String personInfectionDate) {
         this.personContact = personContact;
         this.personAge = personAge;
         this.personFamilyMembers = personFamilyMembers;
@@ -71,7 +71,7 @@ public class Person {
         this.personCity = personCity;
         this.personState = personState;
         this.personEmail = personEmail;
-        this.personInfectionDate = personInfectionDate;
+        this.personInfectionDate = Date.valueOf(personInfectionDate);
     }
 
 
